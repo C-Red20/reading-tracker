@@ -1,36 +1,32 @@
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { deleteBookFromUser } from '../../services/bookService'
+import { getUserBooks } from '../../services/bookService.jsx'
 
-export const BookList = ({ currentUser, books, getAndSetBooks }) => {
-    const [book, getAndSetBooks] = useState([])
+export const BookList = ({ currentUser }) => {
+    const [books, setBooks] = useState([])
 
     const navigate = useNavigate()
 
-    const handleEditBook = (bookId) => {
-        navigate(`/books/edit/${bookId}`)
-    }
-
-    const handleDeleteBook = (userBookId) => {
-            deleteBookFromUser(userBookId).then(() => {
-            getAndSetBooks()
-        })
+    const getBooks = () => {
+      getUserBooks().then((booksArray) => {
+        let userBooks = booksArray.filter(b => b?.user?.id === currentUser);
+        setBooks(userBooks)
+      })
     }
 
     useEffect(() => {
-        
+        getBooks()
     }, [])
 
 return (
     <div className="book-list">
-      {books.map((book) => (
-        <div key={book.id} className="book-item">
-          <h3>{book.title}</h3>
-          <p>{book.author}</p>
-          <button onClick={() => handleEditBook(book.id)}>Edit</button>
-          <button onClick={() => handleDeleteBook(book.userBookId)}>Delete</button>
+      {books.map((b) => (
+        <div key={b.id} className="book-item">
+          <h3>{b?.book?.title}</h3>
+
         </div>
       ))}
+      <button onClick={() => console.log(books)}>Good Game</button>
     </div>
   )
 }

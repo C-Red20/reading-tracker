@@ -1,5 +1,5 @@
 export const getUserBooks = () => {
-    return fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book`)
+    return fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book`).then(response => response.json())
 }
 
 export const getCurBooks = () => {

@@ -1,52 +1,39 @@
-import { Outlet, Route, Routes } from "react-router-dom"
-import { Welcome } from "../components/welcome/Welcome.jsx"
-import { NavBar } from "../components/nav/NavBar.jsx"
-
-
-
+import { Outlet, Route, Routes } from 'react-router-dom'
+import { Welcome } from '../components/welcome/Welcome'
+import { NavBar } from '../components/nav/NavBar'
+import { BookList } from '../components/books/BookList'
+import { useNavigate } from 'react-router-dom'
 
 export const CustomerViews = ({ currentUser }) => {
-    return (
-        <Routes>
-            <Route
-                path="/"
-                element={
-                    <>
-                        <NavBar />
-                        <Outlet />
-                    </>
-                }
-            >
-                <Route index element={<Welcome />} />
-                
-                {/* <Route path ="articles">
-                    <Route index 
-                    element={<ArticleList currentUser={currentUser} />} 
-                    />
-                    <Route path=":create" 
-                    element={<ArticleForm currentUser={currentUser} />} 
-                    />
-                    <Route path="edit/:articleId" 
-                    element={<ArticleEditForm currentUser={currentUser} />} 
-                    />
-                </Route>
+  const navigate = useNavigate()
 
-                <Route path ="events">
-                    <Route index element={<EventList currentUser={currentUser} />} />
-                    <Route path=":create" element={<EventForm currentUser={currentUser} />} />
-                    <Route path="edit/:eventId" element={<EventEditForm currentUser={currentUser} />} />
-                </Route>
+  const handleAddBook = () => {
+    navigate('/books/create')
+  }
 
-                <Route path="tasks">
-                    <Route index element={<TaskList currentUser={currentUser} />} />
-                    <Route path="create" element={<TaskForm currentUser={currentUser} />} />
-                    <Route path="edit/:taskId" element={<EditTask currentUser={currentUser} />} />
-                </Route> */}
-
-            </Route>
-
-            {/* <Route path="messages" element={<MessageList/>}/>
-            <Route path=":create" element={<MessageForm currentUser={currentUser} />} /> */}
-        </Routes>
-    )
+  return (
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <>
+            <NavBar />
+            <Outlet />
+          </>
+        }
+      >
+        <Route index element={<Welcome />} />
+        <Route path="/books" element={<BookList currentUser={currentUser} />} />
+        <Route
+          path="/books/create"
+          element={<button onClick={handleAddBook}>Add New Book</button>}
+        />
+        <Route
+          path="/books/edit/:bookId"
+          element={<button onClick={() => navigate('/books/edit/:bookId')}>Edit Book</button>}
+        />
+        
+      </Route>
+    </Routes>
+  )
 }

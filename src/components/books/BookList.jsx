@@ -16,20 +16,22 @@ export const BookList = ({ currentUser }) => {
 
     useEffect(() => {
         getBooks()
-    }, [])
+    }, [books])
 
 return (
     <div className="book-list">
       {books.map((b) => (
         <div key={b.id} className="book-item">
           <h3>{b?.book?.title}</h3>
-          <h3>by: {b?.book?.author}</h3>
-          <h3>status: {b?.status?.status}</h3>
-          <h3>rating: {b?.rating.rating}</h3>
+          <h3>By: {b?.book?.author}</h3>
+          <h3>Status: {b?.status?.status}</h3>
+          <h3>Rating: {b?.rating?.rating}</h3>
 
         </div>
       ))}
-      <button onClick={() => console.log(books)}>Good Game</button>
+      <button onClick={() => {
+        navigate("/books/create")
+      }}>Add Book</button>
     </div>
   )
 }

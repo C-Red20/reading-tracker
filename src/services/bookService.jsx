@@ -2,7 +2,7 @@ export const getUserBooks = () => {
     return fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book&_expand=status&_expand=rating`).then(response => response.json())
 }
 
-export const createEvent = (book) => {
+export const createBook = (book) => {
   return fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book&_expand=status&_expand=rating`, { 
       method: "POST",
       headers: {
@@ -10,6 +10,14 @@ export const createEvent = (book) => {
       },
       body: JSON.stringify(book),
   })
+}
+
+export const getAllStatuses = () => {
+    return fetch(`http://localhost:8088/statuses`)
+}
+
+export const getAllRatings = () => {
+    return fetch(`http://localhost:8088/ratings`)
 }
 
 export const getCurBooks = () => {

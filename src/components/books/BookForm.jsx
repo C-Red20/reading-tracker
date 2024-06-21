@@ -1,26 +1,36 @@
-//author: Caila Linger this will add new events
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { createBook } from "../../services/eventService.jsx"
+import { createBook, getAllRatings, getAllStatuses } from "../../services/bookService.jsx"
+
 
 export const BookForm = ({ currentUser }) => {
     const [newBook, setNewBook] = useState({title: "", author: "", status: "", rating: ""})
+    const [statusState, setStatusState] = useState([])
+    const [ratingState, setRatingState] = useState([])
+
+    useEffect(() => {
+        getAllStatuses().then((statuses)=>{setStatusState(statuses)})
+    })
+
+    useEffect(() => {
+        getAllRatings().then((ratings) => {setRatingState(ratings)})
+    })
 
     const navigate = useNavigate()
 
     const handleSave = (event) => {
         event.preventDefault()
 
-        if (newBook?.book.title && newBook?.book.author && newBook?.status.status && newBook?.rating.rating) {
+        if (newBook.title && newBook.author && newBook.status && newBook.rating) {
             const theBook = {
                 userId: currentUser,
-                title: newBook?.book.title,
-                author: newBook?.book.author,
-                status: newBook?.status.status,
-                rating: newBook?.rating.rating
+                title: newBook.title,
+                author: newBook.author,
+                status: newBook.status,
+                rating: newBook.rating
             }
 
-            createEvent(theBook).then(() => {
+            createBook(theBook).then(() => {
                 navigate("/books")
             })
         } else {
@@ -30,14 +40,14 @@ export const BookForm = ({ currentUser }) => {
 
     return (
         <form>
-            <h2>New Books</h2>
+            <h2>New Book</h2>
             <fieldset>
                 <div className="form-group">
-                    <label>Book
+                    <label>Title :
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="book"
+                            placeholder="Title of book"
                             onChange={(event) => {
                                 const bookCopy = {...newBook }
                                 eventCopy.event = event.target.value
@@ -49,14 +59,14 @@ export const BookForm = ({ currentUser }) => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label>Title
+                    <label>Author :
                         <input
                             type="text"
                             className="form-control"
-                            placeholder="title of book"
+                            placeholder="Author of book"
                             onChange={(event) => {
                                 const bookCopy = {...newBook }
-                                eventCopy?.book.title = event.target.value
+                                eventCopy.book.title = event.target.value
                                 setEvent(bookCopy)
                             }}
                         />
@@ -65,15 +75,31 @@ export const BookForm = ({ currentUser }) => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label>Location
-                        <input
-                            type="text"
+                    <label>Status :
+                        <select
                             className="form-control"
-                            placeholder="location of event"
+                            placeholder="status of book"
                             onChange={(event) => {
-                                const eventCopy = {...newEvent }
+                                const bookCopy = {...newBook }
                                 eventCopy.location = event.target.value
                                 setEvent(eventCopy)
+                            }}
+                        >
+                            {}
+                        </select>
+                    </label>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label>Rating :
+                        <select
+                            className="form-control"
+                            placeholder="rating of book"
+                            onChange={(event) => {
+                                const bookCopy = {...newBook }
+                                eventCopy.book.title = event.target.value
+                                setEvent(bookCopy)
                             }}
                         />
                     </label>
@@ -82,9 +108,9 @@ export const BookForm = ({ currentUser }) => {
             <fieldset>
                 <div className="form-group">
                     <button className="form-btn btn-info"
-                        onClick={()=>{handleSave(event)}}
+                        onClick={()=>{handleSave(theBook)}}
                     >
-                        Create Event
+                        Add Book
                     </button>
                 </div>
             </fieldset>                     

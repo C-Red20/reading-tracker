@@ -4,6 +4,7 @@ import { getUserBooks } from '../../services/bookService.jsx'
 
 export const BookList = ({ currentUser }) => {
     const [books, setBooks] = useState([])
+    const [filteredBooks, setFilteredBooks] = useState([])
 
     const navigate = useNavigate()
 
@@ -15,12 +16,19 @@ export const BookList = ({ currentUser }) => {
     }
 
     useEffect(() => {
-        getBooks()
-    }, [books])
+        getUserBooks().then((booksArray) => {
+          setBooks(booksArray)
+        })
+    }, [])
+
+    useEffect(() => {
+      let fbooks = books.filter((currentBook) => currentBook.user.id === currentUser)
+        setFilteredBooks(fbooks)
+  }, [books])
 
 return (
     <div className="book-list">
-      {books.map((b) => (
+      {filteredBooks.map((b) => (
         <div key={b.id} className="book-item">
           <h3>{b?.book?.title}</h3>
           <h3>By: {b?.book?.author}</h3>

@@ -1,9 +1,9 @@
 export const getUserBooks = () => {
-    return fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book&_expand=status&_expand=rating`).then(response => response.json())
+    return fetch(`http://localhost:8088/books?_expand=user&_expand=status&_expand=rating`).then(response => response.json())
 }
 
 export const createBook = (book) => {
-  return fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book&_expand=status&_expand=rating`, { 
+  return fetch(`http://localhost:8088/books`, { 
       method: "POST",
       headers: {
           "Content-Type": "application/json"
@@ -13,15 +13,15 @@ export const createBook = (book) => {
 }
 
 export const getAllStatuses = () => {
-    return fetch(`http://localhost:8088/statuses`)
+    return fetch(`http://localhost:8088/statuses`).then(response => response.json())
 }
 
 export const getAllRatings = () => {
-    return fetch(`http://localhost:8088/ratings`)
+    return fetch(`http://localhost:8088/ratings`).then(response => response.json())
 }
 
 export const getCurBooks = () => {
-    return fetch(`http://localhost:8088/userBooks?_expand=user&_expand=book&_expand=status`)
+    return fetch(`http://localhost:8088/books?_expand=user&_expand=status`)
 }
 
 // export const getNotStartedBooks = () => {

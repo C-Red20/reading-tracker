@@ -26,8 +26,8 @@ export const BookForm = ({ currentUser }) => {
                 title: newBook.title,
                 author: newBook.author,
                 userId: currentUser,
-                statusId: newBook.status,
-                ratingId: newBook.rating
+                statusId: newBook.statusId,
+                ratingId: newBook.ratingId
             }
 
             createBook(theBook).then(() => {

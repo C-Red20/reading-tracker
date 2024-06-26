@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
   Collapse,
   Navbar,
@@ -7,10 +7,11 @@ import {
   Nav,
   NavItem,
   NavLink,
-} from 'reactstrap';
+} from 'reactstrap'
 
 export const NavBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
+
 
   const toggle = () => setIsOpen(!isOpen);
 
@@ -26,13 +27,13 @@ export const NavBar = () => {
               <NavLink href="/books">All Books</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/books/reading">Currently Reading</NavLink>
+              <NavLink href="/reading">Currently Reading</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/books/finished">Finished Books</NavLink>
+              <NavLink href="/finished">Finished Books</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/books/not-started">Not Started</NavLink>
+              <NavLink href="/not-started">Not Started</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/" onClick={() => localStorage.removeItem("activeUser")}>

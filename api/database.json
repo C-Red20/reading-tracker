@@ -43,8 +43,8 @@
       "title": "The Hobbit",
       "author": "J.R.R. Tolkien",
       "userId": 4,
-      "statusId": 1,
-      "ratingId": 6
+      "statusId": "3",
+      "ratingId": "4"
     },
     {
       "id": 4,
@@ -59,8 +59,8 @@
       "title": "How to get away with Murder",
       "author": "Mike Adkins",
       "userId": 4,
-      "statusId": 1,
-      "ratingId": 6
+      "statusId": 3,
+      "ratingId": 4
     },
     {
       "id": 6,
@@ -69,8 +69,23 @@
       "userId": 2,
       "statusId": 3,
       "ratingId": 5
+    },
+    {
+      "title": "Trash Trash",
+      "author": "ME",
+      "userId": 4,
+      "statusId": "3",
+      "ratingId": "6",
+      "id": 7
+    },
+    {
+      "title": "MY MY MY",
+      "author": "Homie",
+      "userId": 4,
+      "statusId": "2",
+      "ratingId": "6",
+      "id": 8
     }
-    
   ],
   "statuses": [
     {

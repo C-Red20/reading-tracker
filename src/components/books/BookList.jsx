@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { getUserBooks } from '../../services/bookService.jsx'
+import { deleteBook, getUserBooks } from '../../services/bookService.jsx'
+import './Book.css'; // Import your CSS file for styling
+
 
 export const BookList = ({ currentUser }) => {
     const [books, setBooks] = useState([])
@@ -22,21 +24,46 @@ export const BookList = ({ currentUser }) => {
     }, [])
 
     useEffect(() => {
-      let fbooks = books.filter((currentBook) => currentBook.user.id === currentUser)
+      let fbooks = books?.filter((currentBook) => currentBook.user.id === currentUser)
         setFilteredBooks(fbooks)
   }, [books])
 
-return (
-    <div className="book-list">
-      {filteredBooks.map((b) => (
-        <div key={b.id} className="book-item">
-          <h3>{b?.book?.title}</h3>
-          <h3>By: {b?.book?.author}</h3>
-          <h3>Status: {b?.status?.status}</h3>
-          <h3>Rating: {b?.rating?.rating}</h3>
+  const handleDelete = (bookId) => {
 
-        </div>
-      ))}
+    deleteBook(bookId).then(() => {
+      getUserBooks().then((booksArray) => {
+        setBooks(booksArray)
+      })
+    })
+  }
+
+
+return (
+    <div className="book-list-container">
+      <h2>My Book List</h2>
+      <div className="scrollable-list">
+        {filteredBooks?.map((b) => (
+          <div key={b.id} className="book-item">
+            <h3>{b?.title}</h3>
+            <h3>By: {b?.author}</h3>
+            <h3>Status: {b?.status?.status}</h3>
+            <h3>Rating: {b?.rating?.rating}</h3>
+              <div className="btn-container">
+                  <button
+                      className="filter-btn btn-primary"
+                      onClick={() => {
+                          navigate(`/books/edit/${b.id}`)
+                      }}
+                  >
+                    Edit
+                  </button>                
+                  <button className="btn btn-secondary" onClick={() => handleDelete(b.id)}>
+                    Delete
+                  </button>
+              </div>
+          </div>
+        ))}
+      </div>
       <button onClick={() => {
         navigate("/books/create")
       }}>Add Book</button>

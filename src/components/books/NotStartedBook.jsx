@@ -1,21 +1,66 @@
-// import React from 'react';
-// import { Button } from 'reactstrap'; // Adjust imports based on your UI library
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { deleteBook, getCurBooks } from '../../services/bookService.jsx'
+import './Book.css'; // Import your CSS file for styling
 
-// const NotStartedBooks = ({ books, onStartClick, onEditClick, onDeleteClick }) => {
-//   return (
-//     <div>
-//       <h2>Not Started Books</h2>
-//       {books.map(book => (
-//         <div key={book.id}>
-//           <p>{book.title} by {book.author}</p>
-//           <Button onClick={() => onStartClick(book.id)}>Start</Button>
-//           <Button onClick={() => onEditClick(book.id)}>Edit</Button>
-//           <Button onClick={() => onDeleteClick(book.id)}>Delete</Button>
-//         </div>
-//       ))}
-//       <Button href="/books/create">Add New Book</Button>
-//     </div>
-//   );
-// };
+export const NotStartedBook = ({ currentUser }) => {
+  const [books, setBooks] = useState([])
+  const [filteredBooks, setFilteredBooks] = useState([])
 
-// export default NotStartedBooks;
+  const navigate = useNavigate();
+
+  const fetchNotStartedBooks = () => {
+    getCurBooks().then((booksArray) => {
+      let filteredBooks = booksArray.filter((b) => b?.user?.id === currentUser && b?.status?.id === 1)
+      setBooks(filteredBooks);
+    });
+  };
+
+  useEffect(() => {
+    getCurBooks().then((booksArray) => {
+      setBooks(booksArray)
+    })
+    }, [])
+
+    useEffect(() => {
+        let fbooks = books?.filter((currentBook) => currentBook.user.id === currentUser && currentBook?.status?.id === 1)
+        setFilteredBooks(fbooks)
+    }, [books])
+
+
+  const handleDelete = (bookId) => {
+    deleteBook(bookId).then(() => {
+      fetchNotStartedBooks()
+    })
+  }
+
+  return (
+    <div className="book-list">
+      <h2>Finished Books</h2>
+      <div className="scrollable-list">
+        {filteredBooks.map((b) => (
+          <div key={b.id} className="book-item">
+            <h3>{b?.title}</h3>
+            <h3>By: {b?.author}</h3>
+            <h3>Status: {b?.status?.status}</h3>
+            <h3>Rating: {b?.rating?.rating}</h3>
+            <div className="btn-container">
+              <button
+                className="filter-btn btn-primary"
+                onClick={() => {
+                  navigate(`/books/edit/${b.id}`);
+                }}
+              >
+                Edit
+              </button>
+              <button className="btn btn-secondary" onClick={() => handleDelete(b.id)}>
+                Delete
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+      <button onClick={() => navigate("/books/create")}>Add Book</button>
+    </div>
+  );
+};

@@ -4,7 +4,7 @@ import { createBook, getAllRatings, getAllStatuses } from "../../services/bookSe
 
 
 export const BookForm = ({ currentUser }) => {
-    const [newBook, setNewBook] = useState({title: "", author: "", status: "", rating: ""})
+    const [newBook, setNewBook] = useState({})
     const [statusState, setStatusState] = useState([])
     const [ratingState, setRatingState] = useState([])
 
@@ -21,18 +21,14 @@ export const BookForm = ({ currentUser }) => {
     const handleSave = (event) => {
         event.preventDefault()
 
-        if (newBook.title && newBook.author) {
+        if (newBook.title && newBook.author && newBook.status && newBook.rating) {
             const theBook = {
                 title: newBook.title,
-                author: newBook.author
-            }
-
-            const theUserBook = {
+                author: newBook.author,
                 userId: currentUser,
-                status: newBook.status,
-                rating: newBook.rating
+                statusId: newBook.status,
+                ratingId: newBook.rating
             }
-
 
             createBook(theBook).then(() => {
                 navigate("/books")
@@ -45,6 +41,7 @@ export const BookForm = ({ currentUser }) => {
     return (
         <form>
             <h2>New Book</h2>
+            <h4>*Please fill out everything</h4>
             <fieldset>
                 <div className="form-group">
                     <label>Title : 
@@ -90,7 +87,7 @@ export const BookForm = ({ currentUser }) => {
                             }}
                         >
                             {statusState.map((statusObj) => {
-                                return <option value={statusObj.id}>{statusObj.status}</option> })}
+                                return <option key={statusObj.id} value={statusObj.id}>{statusObj.status}</option> })}
                         </select>   
                     </label>
                 </div>
@@ -108,7 +105,7 @@ export const BookForm = ({ currentUser }) => {
                             }}
                         >
                             {ratingState.map((ratingObj) => {
-                                return <option value={ratingObj.id}>{ratingObj.rating}</option> })}
+                                return <option key={ratingObj.id} value={ratingObj.id}>{ratingObj.rating}</option> })}
                         </select>
                     </label>
                 </div>

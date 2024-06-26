@@ -25,35 +25,69 @@
     {
       "id": 1,
       "title": "How to Code for Dummies",
-      "author": "Barry Griffith"
+      "author": "Barry Griffith",
+      "userId": 1,
+      "statusId": 1,
+      "ratingId": 6
     },
     {
       "id": 2,
       "title": "How to Make Books for Dummies",
-      "author": "Sarah Brooks"
+      "author": "Sarah Brooks",
+      "userId": 3,
+      "statusId": 1,
+      "ratingId": 6
     },
     {
       "id": 3,
       "title": "The Hobbit",
-      "author": "J.R.R. Tolkien"
+      "author": "J.R.R. Tolkien",
+      "userId": 4,
+      "statusId": "3",
+      "ratingId": "4"
     },
     {
       "id": 4,
       "title": "Adventures of Huckleberry Finn",
-      "author": "Mark Twain"
+      "author": "Mark Twain",
+      "userId": 4,
+      "statusId": 2,
+      "ratingId": 6
     },
     {
       "id": 5,
       "title": "How to get away with Murder",
-      "author": "Mike Adkins"
+      "author": "Mike Adkins",
+      "userId": 4,
+      "statusId": 3,
+      "ratingId": 4
     },
     {
       "id": 6,
       "title": "Assistant to the Villain",
-      "author": "Hannah Nicole Maehrer"
+      "author": "Hannah Nicole Maehrer",
+      "userId": 2,
+      "statusId": 3,
+      "ratingId": 5
+    },
+    {
+      "title": "Trash Trash",
+      "author": "ME",
+      "userId": 4,
+      "statusId": "3",
+      "ratingId": "6",
+      "id": 7
+    },
+    {
+      "title": "MY MY MY",
+      "author": "Homie",
+      "userId": 4,
+      "statusId": "2",
+      "ratingId": "6",
+      "id": 8
     }
   ],
-  "status": [
+  "statuses": [
     {
       "id": 1,
       "status": "Not Started"
@@ -67,7 +101,7 @@
       "status": "Finished"
     }
   ],
-  "rating": [
+  "ratings": [
     {
       "id": 1,
       "rating": 1
@@ -91,50 +125,6 @@
     {
       "id": 6,
       "rating": 0
-    }
-  ],
-  "userBooks": [
-    {
-      "id": 1,
-      "userId": 1,
-      "bookId": 1,
-      "statusId": 1,
-      "ratingId": 6
-    },
-    {
-      "id": 2,
-      "userId": 2,
-      "bookId": 6,
-      "statusId": 3,
-      "ratingId": 5
-    },
-    {
-      "id": 3,
-      "userId": 3,
-      "bookId": 2,
-      "statusId": 1,
-      "ratingId": 6
-    },
-    {
-      "id": 4,
-      "userId": 4,
-      "bookId": 3,
-      "statusId": 1,
-      "ratingId": 6
-    },
-    {
-      "id": 5,
-      "userId": 4,
-      "bookId": 5,
-      "statusId": 2,
-      "ratingId": 6
-    },
-    {
-      "id": 6,
-      "userId": 2,
-      "bookId": 2,
-      "statusId": 2,
-      "ratingId": 6
     }
   ]
 }

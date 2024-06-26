@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-
+import React, { useState } from 'react'
 import {
   Collapse,
   Navbar,
@@ -8,39 +7,36 @@ import {
   Nav,
   NavItem,
   NavLink,
-} from 'reactstrap';
+} from 'reactstrap'
 
-export const NavBar = (args) => {
-  const [isOpen, setIsOpen] = useState(false);
+export const NavBar = () => {
+  const [isOpen, setIsOpen] = useState(false)
+
 
   const toggle = () => setIsOpen(!isOpen);
 
+  
   return (
     <div>
-      <Navbar {...args}>
-        <NavbarBrand href="/">Reading Tracking</NavbarBrand>
+      <Navbar color="light" light expand="md">
+        <NavbarBrand href="/">Reading Tracker</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink>Currently Reading</NavLink>
+              <NavLink href="/books">All Books</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
-                To Be Read
-              </NavLink>
+              <NavLink href="/reading">Currently Reading</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink>
-                Finished
-              </NavLink>
+              <NavLink href="/finished">Finished Books</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/"
-                onClick={() => {
-                    localStorage.removeItem("activeUser")
-                }}
-              >
+              <NavLink href="/not-started">Not Started</NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/" onClick={() => localStorage.removeItem("activeUser")}>
                 <strong>Logout</strong>
               </NavLink>
             </NavItem>
@@ -48,5 +44,5 @@ export const NavBar = (args) => {
         </Collapse>
       </Navbar>
     </div>
-  );
+  )
 }

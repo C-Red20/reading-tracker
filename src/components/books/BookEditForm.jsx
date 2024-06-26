@@ -40,7 +40,7 @@ export const BookEditForm = ({ currentUser }) => {
 
         if (currentBook.title && currentBook.author && currentBook.statusId && currentBook.ratingId) {
             const editedBook = {
-                id: currentBook.id,
+                id: bookId,
                 title: currentBook.title,
                 author: currentBook.author,
                 userId: currentUser,

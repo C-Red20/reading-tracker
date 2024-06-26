@@ -26,8 +26,8 @@ export const BookForm = ({ currentUser }) => {
                 title: newBook.title,
                 author: newBook.author,
                 userId: currentUser,
-                statusId: newBook.statusId,
-                ratingId: newBook.ratingId
+                statusId: newBook.status,
+                ratingId: newBook.rating
             }
 
             createBook(theBook).then(() => {
@@ -86,6 +86,7 @@ export const BookForm = ({ currentUser }) => {
                                 setNewBook(bookCopy)
                             }}
                         >
+                            <option>Select Status</option>
                             {statusState.map((statusObj) => {
                                 return <option key={statusObj.id} value={statusObj.id}>{statusObj.status}</option> })}
                         </select>   
@@ -104,6 +105,7 @@ export const BookForm = ({ currentUser }) => {
                                 setNewBook(bookCopy)
                             }}
                         >
+                            <option>Select Rating</option>
                             {ratingState.map((ratingObj) => {
                                 return <option key={ratingObj.id} value={ratingObj.id}>{ratingObj.rating}</option> })}
                         </select>
@@ -113,7 +115,7 @@ export const BookForm = ({ currentUser }) => {
             <fieldset>
                 <div className="form-group">
                     <button className="form-btn btn-info"
-                        onClick={handleSave}
+                        onClick={(e) => handleSave(e)}
                     >
                         Add Book
                     </button>

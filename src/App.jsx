@@ -5,6 +5,7 @@ import { Register } from './components/auth/Register.jsx'
 import { Authorized } from './views/Authorized.jsx'
 import { ApplicationViews } from './views/ApplicationViews.jsx'
 
+
 export const App = () => {
   return (
 

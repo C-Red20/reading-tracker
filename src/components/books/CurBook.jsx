@@ -6,6 +6,7 @@ import './Book.css'; // Import your CSS file for styling
 export const CurBook = ({ currentUser }) => {
   const [books, setBooks] = useState([])
   const [filteredBooks, setFilteredBooks] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
 
   const navigate = useNavigate();
 
@@ -27,6 +28,14 @@ export const CurBook = ({ currentUser }) => {
         setFilteredBooks(fbooks)
     }, [books])
 
+    useEffect(() => {
+      // Filter books whenever searchTerm or books array changes
+      const filtered = books.filter(book =>
+          book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          book.author.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredBooks(filtered);
+  }, [books, searchTerm])
 
   const handleDelete = (bookId) => {
     deleteBook(bookId).then(() => {
@@ -35,8 +44,16 @@ export const CurBook = ({ currentUser }) => {
   }
 
   return (
-    <div className="book-list">
+    <div className="book-list-container">
       <h2>Currently Being Read</h2>
+      <div className="search-bar">
+                <input
+                    type="text"
+                    placeholder="Search by title or author"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                />
+      </div>
       <div className="scrollable-list">
       {filteredBooks.map((b) => (
         <div key={b.id} className="book-item">

@@ -40,8 +40,8 @@
     },
     {
       "id": 3,
-      "title": "The Hobbit gd",
-      "author": "J.R.R. Tolkien asd",
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
       "userId": 4,
       "statusId": "1",
       "ratingId": "6"
@@ -51,7 +51,7 @@
       "title": "Adventures of Huckleberry Finn",
       "author": "Mark Twain",
       "userId": 4,
-      "statusId": 2,
+      "statusId": "1",
       "ratingId": 6
     },
     {
@@ -79,10 +79,10 @@
       "id": 7
     },
     {
-      "title": "MY MY MY",
-      "author": "Homie",
+      "title": "hgjh",
+      "author": "jyg",
       "userId": 4,
-      "statusId": "2",
+      "statusId": "1",
       "ratingId": "6",
       "id": 8
     }

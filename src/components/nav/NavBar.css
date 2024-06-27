@@ -1,0 +1,36 @@
+.navbar-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000; /* Adjust as needed */
+  }
+  
+  .navbar {
+    padding: 0.5rem 1rem; /* Adjust padding as needed */
+  }
+  
+  .navbar-brand {
+    font-size: 1.5rem; /* Adjust font size as needed */
+  }
+  
+  .navbar-toggler-icon {
+    border-color: #aaa; /* Customize toggler icon color */
+  }
+  
+  .navbar-nav {
+    margin-left: auto; /* Align nav links to the right */
+  }
+  
+  .navbar-nav .nav-link {
+    color: #333;
+    padding: 0.5rem 1rem;
+    font-size: 1rem; /* Adjust font size as needed */
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #007bff; /* Change link color on hover */
+  }
+  
+  .navbar-nav .nav-link.active {
+    font-weight: bold; /* Highlight active link */
+  }

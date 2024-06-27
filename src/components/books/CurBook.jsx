@@ -18,6 +18,15 @@ export const CurBook = ({ currentUser }) => {
   };
 
   useEffect(() => {
+    // Filter books whenever searchTerm or books array changes
+    const filtered = books.filter(book =>
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredBooks(filtered);
+}, [books, searchTerm])
+
+  useEffect(() => {
     getCurBooks().then((booksArray) => {
       setBooks(booksArray)
     })
@@ -28,14 +37,7 @@ export const CurBook = ({ currentUser }) => {
         setFilteredBooks(fbooks)
     }, [books])
 
-    useEffect(() => {
-      // Filter books whenever searchTerm or books array changes
-      const filtered = books.filter(book =>
-          book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          book.author.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredBooks(filtered);
-  }, [books, searchTerm])
+  
 
   const handleDelete = (bookId) => {
     deleteBook(bookId).then(() => {

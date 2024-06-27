@@ -21,7 +21,7 @@ export const NavBar = () => {
       <Navbar color="light" light expand="md">
         <NavbarBrand href="/">Reading Tracker</NavbarBrand>
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <Collapse isOpen={!isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/books">All Books</NavLink>

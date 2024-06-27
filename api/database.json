@@ -23,6 +23,14 @@
   ],
   "books": [
     {
+      "id": 1,
+      "title": "How to Code for Dummies",
+      "author": "Barry Griffith",
+      "userId": 1,
+      "statusId": 1,
+      "ratingId": 6
+    },
+    {
       "id": 2,
       "title": "How to Make Books for Dummies",
       "author": "Sarah Brooks",

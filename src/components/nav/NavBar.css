@@ -5,11 +5,6 @@
   text-align: center; /* Center align text */
 }
 
-.navbar-title {
-  font-size: 2rem;
-  margin-bottom: 1rem; /* Space between title and navbar */
-}
-
 .navbar-title-link {
   text-decoration: none;
   color: #fff; /* White text color */
@@ -17,9 +12,8 @@
 }
 
 .navbar-title-link:hover {
-  text-decoration: underline; /* Underline on hover */
+  color: #000; /* Change text color to black on hover */
 }
-
 
 .navbar {
   display: flex;
@@ -30,6 +24,11 @@
 
 .navbar-toggler {
   display: none; /* Hide the toggler button on larger screens */
+}
+
+.navbar-toggler:hover {
+  border-color: #babcbf; /* Border color on hover */
+  outline: none; /* Remove default blue outline */
 }
 
 .navbar-collapse {
@@ -63,7 +62,7 @@
 }
 
 .nav-link:hover {
-  text-decoration: underline; /* Underline on hover */
+  color: #000; /* Change text color to black on hover */
 }
 
 .nav-link strong {

@@ -10,7 +10,7 @@ export const NavBar = () => {
     return (
         <header className="navbar-container">
             <h1 className="navbar-title">
-                <Link to="/welcome" className="navbar-title-link">Reading Tracker</Link>
+                <Link to="/" className="navbar-title-link">Reading Tracker</Link>
             </h1>
             <nav className="navbar" style={{ backgroundColor: '#70757a' }}>
                 <button className="navbar-toggler" onClick={toggle}>

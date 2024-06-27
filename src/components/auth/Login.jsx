@@ -54,7 +54,7 @@ export const Login = () => {
         </form>
       </section>
       <section>
-        <Link to="/register">Not a member yet?</Link>
+        <Link to="/register" className="not-member-link">Not a member yet?</Link>
       </section>
     </main>
   )

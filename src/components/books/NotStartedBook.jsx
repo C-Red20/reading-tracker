@@ -46,7 +46,7 @@ export const NotStartedBook = ({ currentUser }) => {
 
   return (
     <div className="book-list-container">
-      <h2>Finished Books</h2>
+      <h2>Books Not Started</h2>
       <div className="search-bar">
                 <input
                     type="text"

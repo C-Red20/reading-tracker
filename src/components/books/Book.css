@@ -26,6 +26,17 @@
   }
   
   .btn {
-    margin-right: 5px;
+    margin-right: 5px;    
+    border: 1px solid #3d3d3d; /* Default button border color */
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+  }
+
+.btn:hover {
+    background-color: #70757a; /* Background color on hover */
+    color: #000; /* Text color on hover */
+    border-color: #70757a; /* Border color on hover */
+    outline: none; /* Remove default blue outline */
   }
   

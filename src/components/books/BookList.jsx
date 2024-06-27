@@ -68,7 +68,7 @@ return (
             <h3>Rating: {b?.rating?.rating}</h3>
               <div className="btn-container">
                   <button
-                      className="filter-btn btn-primary"
+                      className="btn filter-btn btn-primary"
                       onClick={() => {
                           navigate(`/books/edit/${b.id}`)
                       }}
@@ -82,7 +82,9 @@ return (
           </div>
         ))}
       </div>
-      <button onClick={() => {
+      <button 
+      className="btn add-btn"
+      onClick={() => {
         navigate("/books/create")
       }}>Add Book</button>
     </div>

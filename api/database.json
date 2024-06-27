@@ -26,8 +26,8 @@
       "id": 1,
       "title": "How to Code for Dummies",
       "author": "Barry Griffith",
-      "userId": 1,
-      "statusId": 1,
+      "userId": 4,
+      "statusId": "2",
       "ratingId": 6
     },
     {
@@ -85,6 +85,14 @@
       "statusId": "1",
       "ratingId": "6",
       "id": 8
+    },
+    {
+      "title": "Jaywalking for Beginners",
+      "author": "Hood Rats R Us",
+      "userId": 4,
+      "statusId": "2",
+      "ratingId": "6",
+      "id": 9
     }
   ],
   "statuses": [

@@ -18,6 +18,15 @@ export const CurBook = ({ currentUser }) => {
   };
 
   useEffect(() => {
+    // Filter books whenever searchTerm or books array changes
+    const filtered = books.filter(book =>
+        book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        book.author.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredBooks(filtered);
+}, [books, searchTerm])
+
+  useEffect(() => {
     getCurBooks().then((booksArray) => {
       setBooks(booksArray)
     })
@@ -28,14 +37,7 @@ export const CurBook = ({ currentUser }) => {
         setFilteredBooks(fbooks)
     }, [books])
 
-    useEffect(() => {
-      // Filter books whenever searchTerm or books array changes
-      const filtered = books.filter(book =>
-          book.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          book.author.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredBooks(filtered);
-  }, [books, searchTerm])
+  
 
   const handleDelete = (bookId) => {
     deleteBook(bookId).then(() => {
@@ -63,7 +65,7 @@ export const CurBook = ({ currentUser }) => {
           <h3>Rating: {b?.rating?.rating}</h3>
           <div className="btn-container">
             <button
-              className="filter-btn btn-primary"
+              className="btn filter-btn btn-primary"
               onClick={() => {
                 navigate(`/books/edit/${b.id}`);
               }}
@@ -77,7 +79,9 @@ export const CurBook = ({ currentUser }) => {
         </div>
       ))}
       </div>
-      <button onClick={() => navigate("/books/create")}>Add Book</button>
+      <button 
+      className="btn add-btn"
+      onClick={() => navigate("/books/create")}>Add Book</button>
     </div>
   );
 };

@@ -64,7 +64,7 @@ export const NotStartedBook = ({ currentUser }) => {
             <h3>Rating: {b?.rating?.rating}</h3>
             <div className="btn-container">
               <button
-                className="filter-btn btn-primary"
+                className="btn filter-btn btn-primary"
                 onClick={() => {
                   navigate(`/books/edit/${b.id}`);
                 }}
@@ -78,7 +78,9 @@ export const NotStartedBook = ({ currentUser }) => {
           </div>
         ))}
       </div>
-      <button onClick={() => navigate("/books/create")}>Add Book</button>
+      <button 
+      className="btn add-btn"
+      onClick={() => navigate("/books/create")}>Add Book</button>
     </div>
   );
 };

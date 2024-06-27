@@ -1,36 +1,94 @@
 .navbar-container {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 1000; /* Adjust as needed */
+  background-color: #70757a; /* Darker background color */
+  color: #fff; /* Text color */
+  padding: 1rem; /* Padding inside the navbar container */
+  text-align: center; /* Center align text */
+}
+
+.navbar-title-link {
+  text-decoration: none;
+  color: #fff; /* White text color */
+  font-size: 2rem;
+}
+
+.navbar-title-link:hover {
+  color: #000; /* Change text color to black on hover */
+}
+
+.navbar {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: center; /* Center align items */
+  padding: 0 1rem; /* Horizontal padding for navbar */
+}
+
+.navbar-toggler {
+  display: none; /* Hide the toggler button on larger screens */
+}
+
+.navbar-toggler:hover {
+  border-color: #babcbf; /* Border color on hover */
+  outline: none; /* Remove default blue outline */
+}
+
+.navbar-collapse {
+  display: flex;
+  flex-basis: 100%; /* Full width for collapsed menu */
+  justify-content: center; /* Center align items */
+}
+
+.navbar-collapse.open {
+  display: flex; /* Show the collapse menu when open */
+}
+
+.navbar-nav {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap */
+  justify-content: center; /* Center align items */
+}
+
+.nav-item {
+  margin: 0 10px; /* Margin around nav items */
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff; /* White text color */
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.nav-link:hover {
+  color: #000; /* Change text color to black on hover */
+}
+
+.nav-link strong {
+  font-weight: bold; /* Example: Bold font for "Logout" */
+}
+
+@media (max-width: 768px) {
+  .navbar-toggler {
+      display: block; /* Show toggler button on smaller screens */
   }
-  
-  .navbar {
-    padding: 0.5rem 1rem; /* Adjust padding as needed */
+
+  .navbar-collapse {
+      display: none; /* Hide collapse menu by default on smaller screens */
+      flex-basis: auto; /* Reset flex-basis for smaller screens */
   }
-  
-  .navbar-brand {
-    font-size: 1.5rem; /* Adjust font size as needed */
+
+  .navbar-toggler.open + .navbar-collapse {
+      display: flex; /* Show collapse menu when toggler is clicked */
   }
-  
-  .navbar-toggler-icon {
-    border-color: #aaa; /* Customize toggler icon color */
-  }
-  
+
   .navbar-nav {
-    margin-left: auto; /* Align nav links to the right */
+      flex-direction: column; /* Stack nav items vertically on smaller screens */
+      text-align: center; /* Center align text */
   }
-  
-  .navbar-nav .nav-link {
-    color: #333;
-    padding: 0.5rem 1rem;
-    font-size: 1rem; /* Adjust font size as needed */
+
+  .nav-item {
+      margin: 10px 0; /* Adjust margin for stacked nav items */
   }
-  
-  .navbar-nav .nav-link:hover {
-    color: #007bff; /* Change link color on hover */
-  }
-  
-  .navbar-nav .nav-link.active {
-    font-weight: bold; /* Highlight active link */
-  }
+}

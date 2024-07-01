@@ -71,20 +71,12 @@
       "ratingId": 5
     },
     {
+      "id": 7,
       "title": "Trash Trash",
       "author": "ME",
       "userId": 4,
       "statusId": "3",
-      "ratingId": "6",
-      "id": 7
-    },
-    {
-      "title": "hgjh",
-      "author": "jyg",
-      "userId": 4,
-      "statusId": "1",
-      "ratingId": "6",
-      "id": 8
+      "ratingId": "6"
     },
     {
       "title": "Jaywalking for Beginners",
@@ -93,6 +85,14 @@
       "statusId": "2",
       "ratingId": "6",
       "id": 9
+    },
+    {
+      "title": "Test.1",
+      "author": "The hobbiot",
+      "userId": 4,
+      "statusId": "1",
+      "ratingId": "5",
+      "id": 10
     }
   ],
   "statuses": [

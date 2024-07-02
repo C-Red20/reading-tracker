@@ -87,12 +87,12 @@
       "id": 9
     },
     {
-      "title": "Test.1",
-      "author": "The hobbiot",
+      "id": 11,
+      "title": "Test 2",
+      "author": "me",
       "userId": 4,
-      "statusId": "1",
-      "ratingId": "5",
-      "id": 10
+      "statusId": "2",
+      "ratingId": "4"
     }
   ],
   "statuses": [

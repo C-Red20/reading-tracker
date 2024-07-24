@@ -1,5 +1,5 @@
-export const getUserBooks = () => {
-    return fetch(`http://localhost:8088/books?_expand=user&_expand=status&_expand=rating`).then(response => response.json())
+export const getUserBooks = (userId) => {
+    return fetch(`http://localhost:8088/books?userId=${userId}&_expand=user&_expand=status&_expand=rating`).then(response => response.json())
 }
 
 export const createBook = (book) => {
